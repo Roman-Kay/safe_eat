@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safe_eat/profile/profile_about_app_screen.dart';
-import 'package:safe_eat/profile/profile_change_name_sheet.dart';
+import 'package:safe_eat/ui/profile/profile_about_app_screen.dart';
+import 'package:safe_eat/ui/profile/profile_change_name_sheet.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/custom_sheet.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
-import 'package:safe_eat/widgets/widget_button.dart';
+import 'package:safe_eat/ui/widgets/custom_sheet.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/widget_button.dart';
 
 class ProfileMainScreen extends StatelessWidget {
   const ProfileMainScreen({super.key});

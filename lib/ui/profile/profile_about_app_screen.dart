@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safe_eat/profile/profile_main_screen.dart';
-import 'package:safe_eat/profile/profile_version_screen.dart';
+import 'package:safe_eat/ui/profile/profile_main_screen.dart';
+import 'package:safe_eat/ui/profile/profile_version_screen.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
 
 class ProfileAboutAppScreen extends StatelessWidget {
   const ProfileAboutAppScreen({super.key});

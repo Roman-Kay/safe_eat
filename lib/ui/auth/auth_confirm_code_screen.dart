@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
-import 'package:safe_eat/widgets/custom_navigator_bottom_bar.dart';
-import 'package:safe_eat/widgets/widget_button.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/custom_navigator_bottom_bar.dart';
+import 'package:safe_eat/ui/widgets/widget_button.dart';
 
 class AuthConfirmCodeScreen extends StatefulWidget {
   const AuthConfirmCodeScreen({super.key});

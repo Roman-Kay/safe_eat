@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safe_eat/auth/auth_phone_num_screen.dart';
+import 'package:safe_eat/ui/auth/auth_phone_num_screen.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
-import 'package:safe_eat/widgets/widget_button.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/widget_button.dart';
 
 class AuthWelcomeScreen extends StatelessWidget {
   const AuthWelcomeScreen({super.key});

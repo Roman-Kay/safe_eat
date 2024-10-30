@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
 
 class WidgetButton extends StatelessWidget {
   WidgetButton({

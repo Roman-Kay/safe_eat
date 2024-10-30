@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/form_for_button.dart';
 
 class ProfileVersionScreen extends StatelessWidget {
   const ProfileVersionScreen({super.key});

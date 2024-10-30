@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safe_eat/utils/colors.dart';
-import 'package:safe_eat/widgets/widget_button.dart';
+import 'package:safe_eat/ui/widgets/widget_button.dart';
 
 class ProfileChangeNameSheet extends StatefulWidget {
   const ProfileChangeNameSheet({super.key});

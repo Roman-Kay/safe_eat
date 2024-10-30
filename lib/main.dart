@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safe_eat/ui/auth/auth_welcome_screen.dart';
 import 'package:safe_eat/utils/colors.dart';
 // import 'package:safe_eat/auth/auth_welcome_screen.dart';
-import 'package:safe_eat/widgets/custom_navigator_bottom_bar.dart';
+import 'package:safe_eat/ui/widgets/custom_navigator_bottom_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: ScreenUtilInit(
         designSize: const Size(393, 852),
         builder: (context, child) {
-          return CustomNavigatorBottomBar();
+          return const CustomNavigatorBottomBar();
         },
       ),
     );
