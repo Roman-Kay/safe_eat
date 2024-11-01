@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/ui/food_card/food_card_reviews_screen.dart';
 import 'package:safe_eat/ui/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/rayting_widget.dart';
+import 'package:safe_eat/ui/widgets/review_card.dart';
+import 'package:safe_eat/ui/widgets/widget_button.dart';
 import 'package:safe_eat/utils/colors.dart';
 import 'package:safe_eat/utils/modals.dart';
 
@@ -203,9 +207,140 @@ class FoodCardMainScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(height: 20.h),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: AppColors.greyEAColor,
+                    ),
+                    SizedBox(height: 34.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/checkpoint.svg',
+                          height: 18.h,
+                        ),
+                        SizedBox(width: 14.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              placeItem.food,
+                              style: TextStyle(
+                                color: AppColors.blackgrey35Color,
+                                fontSize: 15.sp,
+                                height: 1,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(height: 8.h),
+                            Text(
+                              'Маршрут',
+                              style: TextStyle(
+                                color: AppColors.orangeColor,
+                                fontSize: 14.sp,
+                                decoration: TextDecoration.underline,
+                                decorationColor: AppColors.orangeColor,
+                                height: 1,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 15.h),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: AppColors.greyEAColor,
+                    ),
+                    SizedBox(height: 15.h),
+                    Text(
+                      'Что внутри?',
+                      style: TextStyle(
+                        color: AppColors.blackgrey35Color,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    Text(
+                      'Курица в томатном соусе, микс из свежих листьев, отварной картофель, ванильные пирожные, лимонад',
+                      style: TextStyle(
+                        color: AppColors.grey62Color,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                    Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: AppColors.greyEAColor,
+                    ),
+                    SizedBox(height: 24.h),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FoodCardReviewsScreen(),
+                          ),
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          const RaytingWidget(
+                            rayting: 4.5,
+                            lengthRayting: 35,
+                            prossentsFiveLenght: [99, 15, 0, 0, 0],
+                          ),
+                          SizedBox(height: 20.h),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FoodCardReviewsScreen(),
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  height: 156.h,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 10.h,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(left: index == 0 ? 0 : 16.w),
+                        child: const ReviewCard(),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 14.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: WidgetButton(
+                  onTap: () {},
+                  text: 'Забронировать',
+                  color: AppColors.orangeColor,
+                ),
+              ),
+              SizedBox(height: 18.h + MediaQuery.of(context).padding.bottom),
             ],
           ),
           SafeArea(
