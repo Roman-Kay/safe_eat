@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,35 +33,38 @@ class CustomNavigatorBottomBar extends StatefulWidget {
 }
 
 class _CustomNavigatorBottomBarState extends State<CustomNavigatorBottomBar> {
-  final List<NavItem> listOfNavItem = [
-    NavItem(
-      svg: 'assets/images/home.svg',
-      text: 'Главная',
-      index: 0,
-      screen: const HomeMainScreen(),
-    ),
-    NavItem(
-      svg: 'assets/images/search.svg',
-      text: 'Карта',
-      index: 1,
-      screen: const SizedBox(),
-    ),
-    NavItem(
-      svg: 'assets/images/heart.svg',
-      text: 'Избранное',
-      index: 2,
-      screen: FavoritesMainScreeen(),
-    ),
-    NavItem(
-      svg: 'assets/images/profile.svg',
-      text: 'Профиль',
-      index: 3,
-      screen: const ProfileMainScreen(),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<NavItem> listOfNavItem = [
+      NavItem(
+        svg: 'assets/images/home.svg',
+        text: 'Главная',
+        index: 0,
+        screen: HomeMainScreen(
+          setState: () => setState(() {}),
+        ),
+      ),
+      NavItem(
+        svg: 'assets/images/search.svg',
+        text: 'Карта',
+        index: 1,
+        screen: const SizedBox(),
+      ),
+      NavItem(
+        svg: 'assets/images/heart.svg',
+        text: 'Избранное',
+        index: 2,
+        screen: FavoritesMainScreeen(
+          setState: () => setState(() {}),
+        ),
+      ),
+      NavItem(
+        svg: 'assets/images/profile.svg',
+        text: 'Профиль',
+        index: 3,
+        screen: const ProfileMainScreen(),
+      ),
+    ];
     return Scaffold(
       body: listOfNavItem[choossenIndex].screen,
       backgroundColor: AppColors.whiteColor,

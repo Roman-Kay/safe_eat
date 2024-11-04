@@ -20,9 +20,9 @@ class _HomeSomeListScreenState extends State<HomeSomeListScreen> {
   @override
   void initState() {
     if (widget.name == 'Рекомендации для вас') {
-      // listOfFoodsItems = listOfRecomendationItems();
+      listOfFoodsItems = listOfClassOfCategoriesItem[0].list;
     } else {
-      // listOfFoodsItems = listOfRecomendationItems();
+      listOfFoodsItems = listOfClassOfCategoriesItem[1].list;
     }
     super.initState();
   }

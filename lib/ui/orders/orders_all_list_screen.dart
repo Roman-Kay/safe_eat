@@ -133,22 +133,13 @@ class OrdersAllListScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  child: FormForButton(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    onPressed: () {
-                                      showCustomSheet(
-                                        context,
-                                        const OrdersRateSheet(),
-                                      );
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Выкуплен',
-                                        style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.blackgrey35Color,
-                                        ),
+                                  child: Center(
+                                    child: Text(
+                                      'Выкуплен',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.blackgrey35Color,
                                       ),
                                     ),
                                   ),
@@ -181,19 +172,42 @@ class OrdersAllListScreen extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                  'Ваша оценка',
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.blackgrey35Color,
+                                Container(
+                                  width: 123.w,
+                                  height: 30.h,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: AppColors.grey7FColor,
+                                    ),
+                                  ),
+                                  child: FormForButton(
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    onPressed: () {
+                                      showCustomSheet(
+                                        context,
+                                        const OrdersRateSheet(),
+                                      );
+                                    },
+                                    child: Center(
+                                      child: Text(
+                                        'Оставить отзыв',
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.blackgrey35Color,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(width: 8.w),
                                 Wrap(
                                   spacing: 2.w,
                                   children: [
-                                    for (var starBool in List.generate(5, (index) => index + 0.5 <= 3.2))
+                                    for (var starBool in List.generate(5, (index) => index + 0.5 <= 0))
                                       SvgPicture.asset(
                                         starBool ? 'assets/images/star_fill.svg' : 'assets/images/star_outline.svg',
                                         height: 13.h,

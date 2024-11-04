@@ -34,7 +34,7 @@ class FoodItem {
   final String dateStart;
   final String dateEnd;
   final String map;
-  final int placeId;
+  final PlaceItem place;
 
   FoodItem({
     required this.id,
@@ -46,7 +46,7 @@ class FoodItem {
     required this.dateStart,
     required this.dateEnd,
     required this.map,
-    required this.placeId,
+    required this.place,
   });
 }
 

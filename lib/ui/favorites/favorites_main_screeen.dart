@@ -9,10 +9,40 @@ import 'package:safe_eat/utils/modals.dart';
 import '../../data/categories.dart';
 
 // ignore: must_be_immutable
-class FavoritesMainScreeen extends StatelessWidget {
-  FavoritesMainScreeen({super.key});
+class FavoritesMainScreeen extends StatefulWidget {
+  final void Function() setState;
 
-  Future<List<FoodItem>> list = listOfFavoritesItems();
+  const FavoritesMainScreeen({super.key, required this.setState});
+
+  @override
+  State<FavoritesMainScreeen> createState() => _FavoritesMainScreeenState();
+}
+
+class _FavoritesMainScreeenState extends State<FavoritesMainScreeen> {
+  final TextEditingController searchController = TextEditingController();
+  List<FoodItem> searchedItems = [];
+
+  void _searchFood() {
+    final query = searchController.text;
+    if (query.isNotEmpty) {
+      searchedItems = listOfClassOfCategoriesItem[2].list.where((FoodItem foodItem) {
+        return foodItem.name.toLowerCase().contains(query.toLowerCase()) ||
+            foodItem.place.name.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    } else {
+      searchedItems = listOfClassOfCategoriesItem[2].list;
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _searchFood();
+    searchController.addListener(() {
+      _searchFood();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +86,7 @@ class FavoritesMainScreeen extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               color: AppColors.blackgrey35Color,
                             ),
-                            controller: TextEditingController(),
+                            controller: searchController,
                             decoration: InputDecoration(
                               isDense: true,
                               hintText: 'Поиск',
@@ -76,54 +106,45 @@ class FavoritesMainScreeen extends StatelessWidget {
               ),
             ),
           ),
-          FutureBuilder<List<FoodItem>>(
-              future: list,
-              builder: (BuildContext context, snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.data!.isEmpty) {
-                    return const FavoritesEmptyList();
-                  }
-                  return Expanded(
-                    child: ListView(
-                      children: [
-                        ListView.builder(
-                          itemCount: snapshot.data!.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.only(
-                            left: 16.w,
-                            right: 16.w,
-                            bottom: 100.h,
-                          ),
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(top: 25.h),
-                              child: CardListView(
-                                foodItem: snapshot.data![index],
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FoodCardMainScreen(
-                                      foodItem: snapshot.data![index],
-                                    ),
-                                  ),
-                                ),
-                                fullWidth: true,
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+          if (listOfClassOfCategoriesItem[2].list.isEmpty)
+            FavoritesEmptyList(
+              setState: () => widget.setState(),
+            )
+          else
+            Expanded(
+              child: ListView(
+                children: [
+                  ListView.builder(
+                    itemCount: searchedItems.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.only(
+                      left: 16.w,
+                      right: 16.w,
+                      bottom: 100.h,
                     ),
-                  );
-                } else {
-                  return Container(
-                    width: double.infinity,
-                    height: 300,
-                    color: AppColors.blackColor,
-                  );
-                }
-              }),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: CardListView(
+                          foodItem: searchedItems[index],
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FoodCardMainScreen(
+                                foodItem: searchedItems[index],
+                              ),
+                            ),
+                          ),
+                          fullWidth: true,
+                          setState: widget.setState,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );

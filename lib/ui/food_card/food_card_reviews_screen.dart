@@ -101,6 +101,8 @@ class FoodCardReviewsScreen extends StatelessWidget {
       allRaiting = allRaiting + item.raiting;
     }
     allRaiting = allRaiting / placeItem.reviewItems.length;
+    allRaiting = allRaiting - allRaiting % 0.01;
+
     return allRaiting;
   }
 }

@@ -95,16 +95,4 @@ abstract class Places {
       ],
     ),
   ];
-  PlaceItem getPlaceItem(int id) {
-    return listOfAllPlaces.where((var placeItem) => id == placeItem.id).first;
-  }
-
-  // double getaVerageValue(PlaceItem placeItem) {
-  //   double allRaiting = 0;
-  //   for (var item in placeItem.raytingItems) {
-  //     allRaiting = allRaiting + item.raiting;
-  //   }
-  //   allRaiting = allRaiting / placeItem.raytingItems.length;
-  //   return allRaiting;
-  // }
 }

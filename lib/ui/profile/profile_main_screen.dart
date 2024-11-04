@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/ui/auth/auth_welcome_screen.dart';
 import 'package:safe_eat/ui/orders/orders_all_list_screen.dart';
 import 'package:safe_eat/ui/profile/profile_about_app_screen.dart';
 import 'package:safe_eat/ui/profile/profile_change_name_sheet.dart';
@@ -87,13 +88,31 @@ class ProfileMainScreen extends StatelessWidget {
             ),
             const Spacer(),
             WidgetButton(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) => const AuthWelcomeScreen(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              },
               color: AppColors.orangeColor,
               text: 'Выйти',
             ),
             SizedBox(height: 15.h),
             WidgetButton(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) => const AuthWelcomeScreen(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
+                  ),
+                );
+              },
               needBorder: true,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safe_eat/ui/widgets/form_for_button.dart';
+import 'package:safe_eat/ui/widgets/heart_button.dart';
 import 'package:safe_eat/ui/widgets/widget_button.dart';
 import 'package:safe_eat/utils/colors.dart';
+import 'package:safe_eat/utils/modals.dart';
 
-class FoodCardInfoScreen extends StatelessWidget {
-  const FoodCardInfoScreen({super.key});
+class FoodCardInfoScreen extends StatefulWidget {
+  final FoodItem foodItem;
+  const FoodCardInfoScreen({super.key, required this.foodItem});
 
+  @override
+  State<FoodCardInfoScreen> createState() => _FoodCardInfoScreenState();
+}
+
+class _FoodCardInfoScreenState extends State<FoodCardInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,15 +66,9 @@ class FoodCardInfoScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: FormForButton(
-                            onPressed: () {},
-                            borderRadius: BorderRadius.circular(10.r),
-                            child: Center(
-                              child: SvgPicture.asset(
-                                'assets/images/heart.svg',
-                                height: 20.h,
-                              ),
-                            ),
+                          child: HeartButton(
+                            foodItem: widget.foodItem,
+                            setState: () => setState(() {}),
                           ),
                         ),
                       ],

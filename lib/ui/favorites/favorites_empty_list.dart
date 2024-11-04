@@ -3,11 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/ui/widgets/custom_navigator_bottom_bar.dart';
 import 'package:safe_eat/ui/widgets/widget_button.dart';
 import 'package:safe_eat/utils/colors.dart';
 
 class FavoritesEmptyList extends StatelessWidget {
-  const FavoritesEmptyList({super.key});
+  final void Function() setState;
+
+  const FavoritesEmptyList({super.key, required this.setState});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +105,10 @@ class FavoritesEmptyList extends StatelessWidget {
             ),
             const Spacer(),
             WidgetButton(
-              onTap: () {},
+              onTap: () {
+                choossenIndex = 0;
+                setState();
+              },
               color: AppColors.orangeColor,
               text: 'Вернуться на главную',
             ),
