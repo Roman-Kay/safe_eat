@@ -1,12 +1,17 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/ui/favorites/favorites_main_screeen.dart';
 import 'package:safe_eat/ui/home/home_main_screen.dart';
 import 'package:safe_eat/ui/profile/profile_main_screen.dart';
 import 'package:safe_eat/utils/colors.dart';
 import 'package:safe_eat/ui/widgets/form_for_button.dart';
+
+int choossenIndex = 0;
 
 class NavItem {
   final String text;
@@ -41,22 +46,21 @@ class _CustomNavigatorBottomBarState extends State<CustomNavigatorBottomBar> {
       svg: 'assets/images/search.svg',
       text: 'Карта',
       index: 1,
-      screen: SizedBox(),
+      screen: const SizedBox(),
     ),
     NavItem(
       svg: 'assets/images/heart.svg',
       text: 'Избранное',
       index: 2,
-      screen: SizedBox(),
+      screen: FavoritesMainScreeen(),
     ),
     NavItem(
       svg: 'assets/images/profile.svg',
       text: 'Профиль',
       index: 3,
-      screen: ProfileMainScreen(),
+      screen: const ProfileMainScreen(),
     ),
   ];
-  int choossenIndex = 0;
 
   @override
   Widget build(BuildContext context) {

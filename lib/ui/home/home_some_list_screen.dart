@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safe_eat/data/plases.dart';
+import 'package:safe_eat/data/categories.dart';
 import 'package:safe_eat/ui/food_card/food_card_main_screen.dart';
 import 'package:safe_eat/ui/widgets/card_listview.dart';
 import 'package:safe_eat/utils/colors.dart';
@@ -16,13 +16,13 @@ class HomeSomeListScreen extends StatefulWidget {
 }
 
 class _HomeSomeListScreenState extends State<HomeSomeListScreen> {
-  List<PlaceItem> listOfPlacesItems = [];
+  List<FoodItem> listOfFoodsItems = [];
   @override
   void initState() {
     if (widget.name == 'Рекомендации для вас') {
-      listOfPlacesItems = Places.listOfRecomendationItems;
+      // listOfFoodsItems = listOfRecomendationItems();
     } else {
-      listOfPlacesItems = Places.listOfFavoritesItems;
+      // listOfFoodsItems = listOfRecomendationItems();
     }
     super.initState();
   }
@@ -33,7 +33,7 @@ class _HomeSomeListScreenState extends State<HomeSomeListScreen> {
       body: SafeArea(
         bottom: false,
         child: ListView.builder(
-          itemCount: listOfPlacesItems.length,
+          itemCount: listOfFoodsItems.length,
           padding: EdgeInsets.only(
             left: 16.w,
             right: 16.h,
@@ -55,12 +55,12 @@ class _HomeSomeListScreenState extends State<HomeSomeListScreen> {
                   ),
                 SizedBox(height: 25.h),
                 CardListView(
-                  placeItem: listOfPlacesItems[index],
+                  foodItem: listOfFoodsItems[index],
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => FoodCardMainScreen(
-                        placeItem: listOfPlacesItems[index],
+                        foodItem: listOfFoodsItems[index],
                       ),
                     ),
                   ),

@@ -1,57 +1,110 @@
 import 'package:safe_eat/utils/modals.dart';
 
 abstract class Places {
-  static List<PlaceItem> listOfAllItems = [
+  static List<PlaceItem> listOfAllPlaces = [
     PlaceItem(
       id: 1,
       name: 'Дикси',
-      food: 'Пакет с продуктами',
-      lenth: 4,
-      raiting: 4.5,
-      price: 490,
-      oldPrice: 789,
+      reviewItems: [
+        ReviewItem(
+          raiting: 5,
+          nameClient: 'Андрей Ш.',
+          date: '2 дня назад',
+          text: 'Круто',
+        ),
+        ReviewItem(
+          raiting: 4,
+          nameClient: 'Ваня К.',
+          date: '1 день назад',
+          text: 'Норм',
+        ),
+        ReviewItem(
+          raiting: 5,
+          nameClient: 'Ваня К.',
+          date: '5 дней назад',
+          text:
+              'Все очень понравилось. Дллиный отзыв даллфовтыт отаушовытл льаотвоатоввьыбдлоатыльвфл оатьлвылоримт огатм лаьвч отль отьл о тшкаувьаывавыаы',
+        ),
+        ReviewItem(
+          raiting: 5,
+          nameClient: 'Андрей Ш.',
+          date: '2 дня назад',
+          text: 'Круто',
+        ),
+        ReviewItem(
+          raiting: 4,
+          nameClient: 'Ваня К.',
+          date: '1 день назад',
+          text: 'Норм',
+        ),
+        ReviewItem(
+          raiting: 5,
+          nameClient: 'Ваня К.',
+          date: '5 дней назад',
+          text:
+              'Все очень понравилось. Дллиный отзыв даллфовтыт отаушовытл льаотвоатоввьыбдлоатыльвфл оатьлвылоримт огатм лаьвч отль отьл о тшкаувьаывавыаы',
+        ),
+      ],
     ),
     PlaceItem(
       id: 2,
-      name: 'Тамада',
-      food: 'Обед',
-      lenth: 3,
-      raiting: 4.3,
-      price: 690,
-      oldPrice: 989,
+      name: 'Вкусная пышка',
+      reviewItems: [
+        ReviewItem(
+          raiting: 2,
+          nameClient: 'Дарья М.',
+          date: '3 дня назад',
+          text: 'Нe вкусно',
+        ),
+        ReviewItem(
+          raiting: 1,
+          nameClient: 'Анна Л.',
+          date: '4 дня назад',
+          text: 'Хамы!',
+        ),
+        ReviewItem(
+          raiting: 1,
+          nameClient: 'Дарья М.',
+          date: '2 недели назад',
+          text: 'Тараканы',
+        ),
+        ReviewItem(
+          raiting: 1,
+          nameClient: 'Анна Л.',
+          date: '4 дня назад',
+          text: 'Хамл!',
+        ),
+      ],
     ),
     PlaceItem(
       id: 3,
       name: 'Кулинарная лавка',
-      food: 'Выпечка',
-      lenth: 8,
-      raiting: 4.7,
-      price: 390,
-      oldPrice: 694,
+      reviewItems: [
+        ReviewItem(
+          raiting: 4,
+          nameClient: 'Дарья М.',
+          date: '3 дня назад',
+          text: 'Очень вкусно, разнообразие блюд',
+        ),
+        ReviewItem(
+          raiting: 5,
+          nameClient: 'Анна Л.',
+          date: '4 дня назад',
+          text: 'Давно покупаю, вкусные обеды',
+        ),
+      ],
     ),
   ];
-  static List<int> listOfRecomendationId = [1, 2, 3, 1];
+  PlaceItem getPlaceItem(int id) {
+    return listOfAllPlaces.where((var placeItem) => id == placeItem.id).first;
+  }
 
-  static List<PlaceItem> listOfRecomendationItems = List.generate(
-    listOfRecomendationId.length,
-    (int index) {
-      return listOfAllItems.where((var placeItem) => listOfRecomendationId[index] == placeItem.id).first;
-    },
-  );
-  static List<int> listOfNewId = [2, 3, 1, 3, 2];
-
-  static List<PlaceItem> listOfNewItems = List.generate(
-    listOfRecomendationId.length,
-    (int index) {
-      return listOfAllItems.where((var placeItem) => listOfNewId[index] == placeItem.id).first;
-    },
-  );
-  static List<int> listOfFavoritesId = [3, 1, 2, 3, 1, 2];
-
-  static List<PlaceItem> listOfFavoritesItems = List.generate(
-    listOfRecomendationId.length,
-    (int index) {
-      return listOfAllItems.where((var placeItem) => listOfFavoritesId[index] == placeItem.id).first;
-    },
-  );
+  // double getaVerageValue(PlaceItem placeItem) {
+  //   double allRaiting = 0;
+  //   for (var item in placeItem.raytingItems) {
+  //     allRaiting = allRaiting + item.raiting;
+  //   }
+  //   allRaiting = allRaiting / placeItem.raytingItems.length;
+  //   return allRaiting;
+  // }
 }

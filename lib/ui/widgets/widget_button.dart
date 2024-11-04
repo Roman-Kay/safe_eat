@@ -30,7 +30,7 @@ class WidgetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 150),
       height: 60.h,
       width: double.infinity,
       decoration: BoxDecoration(

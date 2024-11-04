@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/ui/orders/orders_all_list_screen.dart';
 import 'package:safe_eat/ui/profile/profile_about_app_screen.dart';
 import 'package:safe_eat/ui/profile/profile_change_name_sheet.dart';
 import 'package:safe_eat/utils/colors.dart';
@@ -51,7 +52,14 @@ class ProfileMainScreen extends StatelessWidget {
             ProfileRowContainer(
               svg: 'assets/images/shopping_cart.svg',
               name: 'Заказы',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const OrdersAllListScreen(),
+                  ),
+                );
+              },
             ),
             ProfileRowContainer(
               svg: 'assets/images/notification.svg',

@@ -16,7 +16,17 @@ showCustomSheet(
       ),
     ),
     context: context,
-    builder: (context) => Column(
+    builder: (context) => CustomSheet(child: child),
+  );
+}
+
+class CustomSheet extends StatelessWidget {
+  final Widget child;
+  const CustomSheet({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
@@ -35,6 +45,6 @@ showCustomSheet(
         ),
         child,
       ],
-    ),
-  );
+    );
+  }
 }

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safe_eat/data/categories.dart';
 import 'package:safe_eat/data/plases.dart';
 import 'package:safe_eat/ui/food_card/food_card_main_screen.dart';
 import 'package:safe_eat/ui/home/home_some_list_screen.dart';
@@ -12,46 +13,59 @@ import 'package:safe_eat/ui/widgets/card_listview.dart';
 import 'package:safe_eat/ui/widgets/form_for_button.dart';
 import 'package:safe_eat/utils/modals.dart';
 
-class HomeMainScreen extends StatelessWidget {
+class HomeMainScreen extends StatefulWidget {
   const HomeMainScreen({super.key});
 
   @override
+  State<HomeMainScreen> createState() => _HomeMainScreenState();
+}
+
+class _HomeMainScreenState extends State<HomeMainScreen> {
+  @override
+  void initState() {
+    print(listOfClassOfPlacesItem());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<ClassOfPlacesItem> listOfClassOfPlacesItem = [
-      ClassOfPlacesItem(
-        name: 'Рекомендации для вас',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeSomeListScreen(
-                name: 'Рекомендации для вас',
-              ),
-            ),
-          );
-        },
-        list: Places.listOfRecomendationItems,
-      ),
-      ClassOfPlacesItem(
-        name: 'Исследуйте новые места',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeSomeListScreen(
-                name: 'Исследуйте новые места',
-              ),
-            ),
-          );
-        },
-        list: Places.listOfNewItems,
-      ),
-      ClassOfPlacesItem(
-        name: 'Избранное',
-        onPressed: () {},
-        list: Places.listOfFavoritesItems,
-      ),
-    ];
+    // List<ClassOfPlacesItem> listOfClassOfPlacesItem = [
+    //   ClassOfPlacesItem(
+    //     name: 'Рекомендации для вас',
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => const HomeSomeListScreen(
+    //             name: 'Рекомендации для вас',
+    //           ),
+    //         ),
+    //       );
+    //     },
+    //     list: Places.listOfRecomendationItems,
+    //   ),
+    //   ClassOfPlacesItem(
+    //     name: 'Исследуйте новые места',
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => const HomeSomeListScreen(
+    //             name: 'Исследуйте новые места',
+    //           ),
+    //         ),
+    //       );
+    //     },
+    //     list: Places.listOfNewItems,
+    //   ),
+    //   ClassOfPlacesItem(
+    //     name: 'Избранное',
+    //     onPressed: () {
+    //       setState(() => choossenIndex = 2);
+    //     },
+    //     list: Places.listOfFavoritesItems,
+    //   ),
+    // ];
     return SafeArea(
       child: ListView(
         children: [
@@ -112,81 +126,90 @@ class HomeMainScreen extends StatelessWidget {
               ],
             ),
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: listOfClassOfPlacesItem.length,
-            itemBuilder: (context, i) {
-              return Column(
-                children: [
-                  SizedBox(height: 20.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: SizedBox(
-                      height: 27.h,
-                      child: FormForButton(
-                        borderRadius: BorderRadius.circular(8),
-                        onPressed: listOfClassOfPlacesItem[i].onPressed,
-                        child: Row(
-                          children: [
-                            Text(
-                              listOfClassOfPlacesItem[i].name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20.sp,
-                                color: AppColors.blackgrey4DColor,
-                              ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              'Все',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp,
-                                color: AppColors.blackgrey48Color,
-                              ),
-                            ),
-                            SizedBox(width: 4.w),
-                            Transform.rotate(
-                              angle: -pi / 2,
-                              child: SvgPicture.asset(
-                                'assets/images/arrow_bottom.svg',
-                                width: 10.w,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 227 + (12 * 2).h,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: listOfClassOfPlacesItem[i].list.length,
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(left: index != 0 ? 10 : 0),
-                          child: CardListView(
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => FoodCardMainScreen(
-                                  placeItem: listOfClassOfPlacesItem[i].list[index],
-                                ),
-                              ),
-                            ),
-                            placeItem: listOfClassOfPlacesItem[i].list[index],
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                ],
-              );
-            },
-          ),
+          // ListView.builder(
+          //   shrinkWrap: true,
+          //   physics: const NeverScrollableScrollPhysics(),
+          //   itemCount: listOfClassOfPlacesItem().length,
+          //   itemBuilder: (context, i) {
+          //     return Column(
+          //       children: [
+          //         SizedBox(height: 20.h),
+          //         Padding(
+          //           padding: EdgeInsets.symmetric(horizontal: 16.w),
+          //           child: SizedBox(
+          //             height: 27.h,
+          //             child: FormForButton(
+          //               borderRadius: BorderRadius.circular(8),
+          //               onPressed: () {
+          //                 Navigator.push(
+          //                   context,
+          //                   MaterialPageRoute(
+          //                     builder: (context) => HomeSomeListScreen(
+          //                       name: Categories.listOfClassOfPlacesItem[i].name,
+          //                     ),
+          //                   ),
+          //                 );
+          //               },
+          //               child: Row(
+          //                 children: [
+          //                   Text(
+          //                     Categories.listOfClassOfPlacesItem[i].name,
+          //                     style: TextStyle(
+          //                       fontWeight: FontWeight.w600,
+          //                       fontSize: 20.sp,
+          //                       color: AppColors.blackgrey4DColor,
+          //                     ),
+          //                   ),
+          //                   const Spacer(),
+          //                   Text(
+          //                     'Все',
+          //                     style: TextStyle(
+          //                       fontWeight: FontWeight.w500,
+          //                       fontSize: 14.sp,
+          //                       color: AppColors.blackgrey48Color,
+          //                     ),
+          //                   ),
+          //                   SizedBox(width: 4.w),
+          //                   Transform.rotate(
+          //                     angle: -pi / 2,
+          //                     child: SvgPicture.asset(
+          //                       'assets/images/arrow_bottom.svg',
+          //                       width: 10.w,
+          //                     ),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ),
+          //           ),
+          //         ),
+          //         SizedBox(
+          //           height: 227 + (12 * 2).h,
+          //           child: ListView.builder(
+          //             scrollDirection: Axis.horizontal,
+          //             itemCount: Categories.listOfClassOfPlacesItem[i].list.length,
+          //             padding: EdgeInsets.symmetric(horizontal: 16.w),
+          //             itemBuilder: (context, index) {
+          //               return Padding(
+          //                 padding: EdgeInsets.only(left: index != 0 ? 10 : 0),
+          //                 child: CardListView(
+          //                   onPressed: () => Navigator.push(
+          //                     context,
+          //                     MaterialPageRoute(
+          //                       builder: (context) => FoodCardMainScreen(
+          //                         foodItem: Categories.listOfClassOfPlacesItem[i].list[index],
+          //                       ),
+          //                     ),
+          //                   ),
+          //                   foodItem: Categories.listOfClassOfPlacesItem[i].list[index],
+          //                 ),
+          //               );
+          //             },
+          //           ),
+          //         )
+          //       ],
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

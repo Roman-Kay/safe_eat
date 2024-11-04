@@ -16,32 +16,62 @@ class NavItem {
 
 class ClassOfPlacesItem {
   final String name;
-  final List<PlaceItem> list;
-  final Function()? onPressed;
+  final List<FoodItem> list;
 
   ClassOfPlacesItem({
     required this.name,
     required this.list,
-    required this.onPressed,
+  });
+}
+
+class FoodItem {
+  final int id;
+  final String name;
+  final String title;
+  final double price;
+  final double oldPrice;
+  final int length;
+  final String dateStart;
+  final String dateEnd;
+  final String map;
+  final int placeId;
+
+  FoodItem({
+    required this.id,
+    required this.name,
+    required this.title,
+    required this.price,
+    required this.oldPrice,
+    required this.length,
+    required this.dateStart,
+    required this.dateEnd,
+    required this.map,
+    required this.placeId,
   });
 }
 
 class PlaceItem {
   final int id;
   final String name;
-  final String food;
-  final int lenth;
-  final double raiting;
-  final double price;
-  final double oldPrice;
+  final List<ReviewItem> reviewItems;
 
   PlaceItem({
     required this.id,
     required this.name,
-    required this.food,
-    required this.lenth,
+    required this.reviewItems,
+  });
+}
+
+class ReviewItem {
+  final int raiting;
+  final String nameClient;
+  final String date;
+  final String text;
+
+  ReviewItem({
     required this.raiting,
-    required this.price,
-    required this.oldPrice,
+    required this.nameClient,
+    required this.date,
+    required this.text,
   });
 }

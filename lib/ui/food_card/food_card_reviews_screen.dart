@@ -6,8 +6,11 @@ import 'package:safe_eat/ui/widgets/rayting_widget.dart';
 import 'package:safe_eat/ui/widgets/review_card.dart';
 import 'package:safe_eat/utils/colors.dart';
 
+import '../../utils/modals.dart';
+
 class FoodCardReviewsScreen extends StatelessWidget {
-  const FoodCardReviewsScreen({super.key});
+  final PlaceItem placeItem;
+  const FoodCardReviewsScreen({super.key, required this.placeItem});
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +53,10 @@ class FoodCardReviewsScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               children: [
                 SizedBox(height: 15.h),
-                const RaytingWidget(
-                  rayting: 4.5,
-                  lengthRayting: 35,
-                  prossentsFiveLenght: [99, 15, 0, 0, 0],
+                RaytingWidget(
+                  rayting: getAverageValue(placeItem),
+                  lengthRayting: placeItem.reviewItems.length,
+                  prossentsFiveLenght: const [85, 15, 0, 0, 0],
                 ),
                 SizedBox(height: 35.h),
                 Text(
@@ -68,14 +71,15 @@ class FoodCardReviewsScreen extends StatelessWidget {
                 SafeArea(
                   top: false,
                   child: ListView.builder(
-                    itemCount: 6,
+                    itemCount: placeItem.reviewItems.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(top: index == 0 ? 0 : 16.h),
-                        child: const ReviewCard(
+                        child: ReviewCard(
+                          reviewItem: placeItem.reviewItems[index],
                           isBig: true,
                         ),
                       );
@@ -89,5 +93,14 @@ class FoodCardReviewsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  double getAverageValue(PlaceItem placeItem) {
+    double allRaiting = 0;
+    for (var item in placeItem.reviewItems) {
+      allRaiting = allRaiting + item.raiting;
+    }
+    allRaiting = allRaiting / placeItem.reviewItems.length;
+    return allRaiting;
   }
 }

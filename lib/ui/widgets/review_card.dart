@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safe_eat/utils/colors.dart';
+import 'package:safe_eat/utils/modals.dart';
 
 class ReviewCard extends StatelessWidget {
   final bool? isBig;
-  const ReviewCard({super.key, this.isBig});
+  final ReviewItem reviewItem;
+  const ReviewCard({super.key, this.isBig, required this.reviewItem});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class ReviewCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Дарья М.',
+                  reviewItem.nameClient,
                   style: TextStyle(
                     color: AppColors.blackColor,
                     fontSize: 14.sp,
@@ -43,7 +45,7 @@ class ReviewCard extends StatelessWidget {
                 Wrap(
                   spacing: 2.w,
                   children: [
-                    for (var starBool in List.generate(5, (index) => index + 0.5 <= 3))
+                    for (var starBool in List.generate(5, (index) => index + 0.5 <= reviewItem.raiting))
                       SvgPicture.asset(
                         'assets/images/star_fill.svg',
                         // ignore: deprecated_member_use
@@ -56,7 +58,7 @@ class ReviewCard extends StatelessWidget {
             ),
             SizedBox(height: 5.h),
             Text(
-              '3 дня назад',
+              reviewItem.date,
               style: TextStyle(
                 color: AppColors.grey62Color,
                 fontSize: 12.sp,
@@ -65,7 +67,7 @@ class ReviewCard extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              'Очень вкусно, разнообразие блюд',
+              reviewItem.text,
               style: TextStyle(
                 color: AppColors.grey62Color,
                 fontSize: 14.sp,
